@@ -1,0 +1,16 @@
+import random
+import dados_externos
+
+def choose_followers(dic):
+    """"tem como função retornar o numero de seguidores
+        entra dentro da lista
+        procura o valor da chave que lhe está atrelada
+        retorna o valor dessa chave"""
+    for value in dic.values():
+        if isinstance(value,int):
+            return int
+
+def choose_item_random(list):
+    """"" tem como função retornar um item aleatorio de dentro da lista"""
+    return list[random.randint(0,len(list)-1)]
+
