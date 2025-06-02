@@ -785,6 +785,13 @@
 import random
 import dados_externos
 
+DICIONARIO = {
+        'name': 'Messi',
+        'follower_count': 890,
+        'description': 'footblall player',
+        'country': 'Argentina'
+        }
+
 d = [
     {
         'name': 'Messi',
@@ -805,6 +812,21 @@ d = [
         'country': 'United States'
     },
 ]
+
+
+def saudacao():
+    print("bem vindo ao jogo de maior menor")
+
+def quer_jogar():
+    while True:
+        choice = input("Voce quer jogar: y/n").lower()
+        if choice == 'y':
+            return True
+        elif choice != 'y' and choice != 'n':
+            print("apenas y ou n")
+            continue
+        else:
+            return False
 
 def escolhe_dicionario_aleatorio(lista):
     return lista[random.randint(0,len(lista) - 1)]
@@ -836,3 +858,53 @@ def imprime_dicionario_sem_valor_de_Seguidres(dicionario):
         for key, value in dicionario.items()
         if not isinstance(value,(int,float))
     }
+
+# print(imprime_dicionario_sem_valor_de_Seguidres(DICIONARIO))
+
+def comparar_valores_de_seguidores_definir_maior(valor1,valor2):
+    if valor1 > valor2:
+        return valor1
+    else:
+        return valor2
+
+def jogador_Esscolhee(dicionario1,dicionario2):
+    choice = input(f"qual personagem tem mais seguidores?: {dicionario1}\nou\n{dicionario2}")
+    if choice == dicionario1:
+        return esolhe_valor_dentro_do_dicionario(dicionario1)
+    else:
+        return esolhe_valor_dentro_do_dicionario(dicionario2)
+
+def jogador_ganhou(valor_jogador,valor_verdade):
+    if valor_jogador > valor_verdade:
+        return True
+    else:
+        return False
+
+def jogo_joga(lista_de_dicionarios):
+    game_status = True
+    saudacao()
+    quer_jogar()
+    if quer_jogar == True:
+        while game_status == True:
+            dic1 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
+            dic2 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
+            valor1 = esolhe_valor_dentro_do_dicionario(dic1)
+            valor2 = esolhe_valor_dentro_do_dicionario(dic2)
+            valor_verdade = comparar_valores_de_seguidores_definir_maior(valor1,valor2)
+            dicionario_sem_valor_numerico1 = imprime_dicionario_sem_valor_de_Seguidres(dic1)
+            dicionario_sem_valor_numerico2 = imprime_dicionario_sem_valor_de_Seguidres(dic2)
+            choice = input(f"quem voce acha que tem mais seguidores:\nA:{dicionario_sem_valor_numerico1}\nou\nB:{dicionario_sem_valor_numerico2}")
+            if choice == 'a':
+                valor_jogador = dic1
+            else:
+                valor_jogador = dic2
+            jogador_ganhou(valor_jogador,valor_verdade)
+            if valor_verdade == True:
+                continue
+            else:
+                game_status = False
+                break
+    else:
+        print('tchau')
+
+jogo_joga(dados_externos.famous_data)
