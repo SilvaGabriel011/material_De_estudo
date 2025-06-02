@@ -846,7 +846,7 @@ def comparar_valores_De_seguidores(conta1,conta2):
     if conta1 > conta2:
         return conta1
     else:
-        conta2
+        return conta2
 
 def escolha_do_jogador(dicionario1,dicionario2):
     escolha = input(f"escolha entre {dicionario1} e {dicionario2}")

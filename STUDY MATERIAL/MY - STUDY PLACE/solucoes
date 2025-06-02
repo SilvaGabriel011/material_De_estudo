@@ -1,0 +1,256 @@
+##### jogo maior ou menor ####
+
+import random
+
+# Exemplo de lista de dicionários; no final, chamamos `jogo_joga(dados_externos.famous_data)`
+d = [
+    {
+        'name': 'Messi',
+        'follower_count': 890,
+        'description': 'football player',
+        'country': 'Argentina'
+    },
+    {
+        'name': 'Loud',
+        'follower_count': 36,
+        'description': 'e-sports team',
+        'country': 'Brasil'
+    },
+    {
+        'name': 'Instagram',
+        'follower_count': 346,
+        'description': 'Social media platform',
+        'country': 'United States'
+    },
+    # ... acrescente quantos perfis quiser
+]
+
+
+def saudacao():
+    print("Bem-vindo ao jogo 'Quem tem mais seguidores'.\n")
+
+
+def quer_jogar():
+    """
+    Pergunta se o usuário quer iniciar uma partida. Retorna True ou False.
+    """
+    while True:
+        choice = input("Você quer jogar? (y/n): ").strip().lower()
+        if choice == 'y':
+            return True
+        elif choice == 'n':
+            return False
+        else:
+            print("Por favor, responda apenas 'y' ou 'n'.\n")
+
+
+def sortear_perfil(dados):
+    """
+    Retorna um dicionário aleatório da lista `dados`.
+    """
+    return random.choice(dados)
+
+
+def formatar_perfil(perfil_dict):
+    """
+    Formata o dicionário para exibição ao usuário sem mostrar o número de seguidores.
+    """
+    nome = perfil_dict['name']
+    desc = perfil_dict['description']
+    pais = perfil_dict['country']
+    return f"{nome}, {desc} de {pais}"
+
+
+def extrair_seguidores(perfil_dict):
+    """
+    Retorna o número de seguidores contido em perfil_dict["follower_count"].
+    """
+    return perfil_dict['follower_count']
+
+
+def comparar_e_retornar_identificador(perfil1, perfil2):
+    """
+    Compara seguidores de perfil1 e perfil2.
+    Retorna 'A' se perfil1 tiver mais seguidores, 'B' se perfil2 tiver mais,
+    e 'E' (Empate) se forem iguais.
+    """
+    f1 = extrair_seguidores(perfil1)
+    f2 = extrair_seguidores(perfil2)
+    if f1 > f2:
+        return 'A'
+    elif f2 > f1:
+        return 'B'
+    else:
+        return 'E'
+
+
+def jogo_joga(lista_de_perfis):
+    """
+    Função principal que controla todo o fluxo do jogo.
+    """
+    saudacao()
+    if not quer_jogar():
+        print("Tudo bem. Até a próxima!")
+        return
+
+    pontuacao = 0
+    game_on = True
+
+    # Sorteia os dois perfis iniciais (A e B) de forma que não sejam iguais
+    perfil_a = sortear_perfil(lista_de_perfis)
+    perfil_b = sortear_perfil(lista_de_perfis)
+    while perfil_b == perfil_a:
+        perfil_b = sortear_perfil(lista_de_perfis)
+
+    # Loop principal: continua até o jogador errar ou desistir
+    while game_on:
+        # 1) Formatar os perfis para exibição
+        texto_a = formatar_perfil(perfil_a)
+        texto_b = formatar_perfil(perfil_b)
+
+        # 2) Mostrar opções
+        print(f"Quem tem mais seguidores?\nA: {texto_a}\nB: {texto_b}\n")
+
+        # 3) Ler e validar escolha do usuário
+        escolha = ""
+        while escolha not in ['A', 'B']:
+            escolha = input("Digite 'A' ou 'B' para escolher: ").strip().upper()
+            if escolha not in ['A', 'B']:
+                print("Opção inválida. Digite apenas 'A' ou 'B'.\n")
+
+        # 4) Determinar o perfil correto
+        correto = comparar_e_retornar_identificador(perfil_a, perfil_b)
+
+        # 5) Verificar se acertou
+        if escolha == correto:
+            pontuacao += 1
+            print(f"Correto! Sua pontuação atual é {pontuacao}.\n")
+
+            # Definir novo perfil A (o vencedor permanece como A; o perdedor será substituído):
+            if correto == 'A':
+                # perfil_a continua
+                pass
+            else:
+                # se B venceu, agora perfil_b vira o novo perfil_a
+                perfil_a = perfil_b
+
+            # Sortear um novo perfil_b, garantindo que não seja o mesmo que perfil_a
+            perfil_b = sortear_perfil(lista_de_perfis)
+            while perfil_b == perfil_a:
+                perfil_b = sortear_perfil(lista_de_perfis)
+
+        else:
+            # 6) Jogador errou → fim de jogo
+            print(f"Errado! Sua pontuação final foi {pontuacao}.")
+            # Para dar feedback, mostramos quem era o correto:
+            if correto == 'A':
+                nome_correto = perfil_a['name']
+            elif correto == 'B':
+                nome_correto = perfil_b['name']
+            else:
+                nome_correto = "Empate"
+            print(f"O perfil correto era: {nome_correto} com", 
+                  extrair_seguidores(perfil_a if correto=='A' else perfil_b), 
+                  "seguidores.\n")
+            game_on = False
+
+        # Se quiser, pode perguntar se o jogador quer continuar a próxima rodada; 
+        # mas como o loop só termina quando erra, não há necessidade de nova pergunta aqui.
+
+    print("Obrigado por jogar! Até a próxima.")
+    
+import dados_externos
+# Chamar a função com sua lista real:
+jogo_joga(dados_externos.famous_data)  # ou: jogo_joga(dados_externos.famous_data)  
+
+#### segunda solução acerca do jogo de maior/menor
+
+import random
+
+def sortear_perfil(dados):
+    return random.choice(dados)
+
+def formatar_perfil(perfil_dict):
+    # Exibe tudo menos os números (ou apenas baseia-se na exclusão por tipo)
+    return "  ".join(
+        f"{k}: {v}"
+        for k, v in perfil_dict.items()
+        if not isinstance(v, (int, float))
+    )
+
+def extrair_numero_generico(perfil_dict):
+    for chave, valor in perfil_dict.items():
+        if isinstance(valor, (int, float)):
+            return valor
+    return None
+
+def comparar_e_retornar_identificador(perfil1, perfil2):
+    f1 = extrair_numero_generico(perfil1)
+    f2 = extrair_numero_generico(perfil2)
+    if f1 is None or f2 is None:
+        return None  # sem número para comparar
+    if f1 > f2:
+        return 'A'
+    elif f2 > f1:
+        return 'B'
+    else:
+        return 'E'  # empate
+
+def jogo_joga(lista_de_perfis):
+    pontuacao = 0
+    # Pergunta inicial (simplificado)
+    jogar = input("Quer jogar? (y/n): ").lower() == 'y'
+    if not jogar:
+        print("Até mais!")
+        return
+
+    perfil_a = sortear_perfil(lista_de_perfis)
+    perfil_b = sortear_perfil(lista_de_perfis)
+    while perfil_b == perfil_a:
+        perfil_b = sortear_perfil(lista_de_perfis)
+
+    game_on = True
+    while game_on:
+        # 1) Formatar e exibir sem números
+        print("Quem tem mais seguidores?\n")
+        print(f"A: {formatar_perfil(perfil_a)}")
+        print(f"B: {formatar_perfil(perfil_b)}\n")
+
+        # 2) Ler escolha
+        escolha = ""
+        while escolha not in ['A', 'B']:
+            escolha = input("Digite 'A' ou 'B': ").strip().upper()
+            if escolha not in ['A', 'B']:
+                print("Opção inválida.")
+
+        # 3) Descobrir qual é o correto
+        correto = comparar_e_retornar_identificador(perfil_a, perfil_b)
+        if correto is None:
+            print("Erro: não foi possível encontrar número para comparar.")
+            return
+
+        # 4) Verificar se o jogador acertou
+        if escolha == correto:
+            pontuacao += 1
+            print(f"Correto! Pontuação: {pontuacao}.\n")
+
+            # Se acertou, o vencedor se torna perfil_a
+            if correto == 'B':
+                perfil_a = perfil_b
+            # Sortear novo perfil_b
+            perfil_b = sortear_perfil(lista_de_perfis)
+            while perfil_b == perfil_a:
+                perfil_b = sortear_perfil(lista_de_perfis)
+        else:
+            print(f"Errado! Pontuação final: {pontuacao}.")
+            # Mostrar o vencedor real
+            if correto == 'A':
+                vencedor_real = perfil_a
+            else:
+                vencedor_real = perfil_b
+            print("O perfil correto era:")
+            print(formatar_perfil(vencedor_real), 
+                  "– Seguidores:", extrair_numero_generico(vencedor_real))
+            game_on = False
+
+    print("Fim do jogo. Obrigado por jogar!")
