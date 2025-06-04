@@ -782,8 +782,175 @@
 # #         else:
 # #             print("ok, obrigado")
 
+# import random
+# import dados_externos
+
+# DICIONARIO = {
+#         'name': 'Messi',
+#         'follower_count': 890,
+#         'description': 'footblall player',
+#         'country': 'Argentina'
+#         }
+
+# d = [
+#     {
+#         'name': 'Messi',
+#         'follower_count': 890,
+#         'description': 'footblall player',
+#         'country': 'Argentina'
+#     },
+#     {
+#         'name': 'Loud',
+#         'follower_count': 36,
+#         'description': 'e-sports team',
+#         'country': 'Brasil'
+#     },
+#         {
+#         'name': 'Instagram',
+#         'follower_count': 346,
+#         'description': 'Social media platform',
+#         'country': 'United States'
+#     },
+# ]
+
+
+# def saudacao():
+#     print("bem vindo ao jogo de maior menor")
+
+# def quer_jogar():
+#     while True:
+#         choice = input("Voce quer jogar: y/n").lower()
+#         if choice == 'y':
+#             return True
+#         elif choice != 'y' and choice != 'n':
+#             print("apenas y ou n")
+#             continue
+#         else:
+#             return False
+
+# def escolhe_dicionario_aleatorio(lista):
+#     return lista[random.randint(0,len(lista) - 1)]
+
+# # print(escolhe_dicionario_aleatorio(d))
+
+
+# def esolhe_valor_dentro_do_dicionario(dicionario):
+#     for value in dicionario.values():
+#         if isinstance(value,int):
+#             return value
+
+# # dicionarioo = (escolhe_dicionario_aleatorio(d))
+
+# # print(esolhe_valor_dentro_do_dicionario(dicionarioo))
+# def comparar_valores_De_seguidores(conta1,conta2):
+#     if conta1 > conta2:
+#         return conta1
+#     else:
+#         return conta2
+
+# def escolha_do_jogador(dicionario1,dicionario2):
+#     escolha = input(f"escolha entre {dicionario1} e {dicionario2}")
+#     return escolha
+
+# def imprime_dicionario_sem_valor_de_Seguidres(dicionario):
+#     return {
+#         key:value 
+#         for key, value in dicionario.items()
+#         if not isinstance(value,(int,float))
+#     }
+
+# # print(imprime_dicionario_sem_valor_de_Seguidres(DICIONARIO))
+
+# def comparar_valores_de_seguidores_definir_maior(valor1,valor2):
+#     if valor1 > valor2:
+#         return valor1
+#     else:
+#         return valor2
+
+# def jogador_Esscolhee(dicionario1,dicionario2):
+#     choice = input(f"qual personagem tem mais seguidores?: {dicionario1}\nou\n{dicionario2}")
+#     if choice == dicionario1:
+#         return esolhe_valor_dentro_do_dicionario(dicionario1)
+#     else:
+#         return esolhe_valor_dentro_do_dicionario(dicionario2)
+
+# def jogador_ganhou(valor_jogador,valor_verdade):
+#     if valor_jogador > valor_verdade:
+#         return True
+#     else:
+#         return False
+
+# def jogo_joga(lista_de_dicionarios):
+#     game_status = True
+#     saudacao()
+#     quer_jogar()
+#     if quer_jogar == True:
+#         while game_status == True:
+#             dic1 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
+#             dic2 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
+#             valor1 = esolhe_valor_dentro_do_dicionario(dic1)
+#             valor2 = esolhe_valor_dentro_do_dicionario(dic2)
+#             valor_verdade = comparar_valores_de_seguidores_definir_maior(valor1,valor2)
+#             dicionario_sem_valor_numerico1 = imprime_dicionario_sem_valor_de_Seguidres(dic1)
+#             dicionario_sem_valor_numerico2 = imprime_dicionario_sem_valor_de_Seguidres(dic2)
+#             choice = input(f"quem voce acha que tem mais seguidores:\nA:{dicionario_sem_valor_numerico1}\nou\nB:{dicionario_sem_valor_numerico2}")
+#             if choice == 'a':
+#                 valor_jogador = dic1
+#             else:
+#                 valor_jogador = dic2
+#             jogador_ganhou(valor_jogador,valor_verdade)
+#             if valor_verdade == True:
+#                 continue
+#             else:
+#                 game_status = False
+#                 break
+#     else:
+#         print('tchau')
+
+# jogo_joga(dados_externos.famous_data)
+
+
+# arquivo jogo.py
+
+# import random
+
+# DADOS = [
+#     {"name": "A", "followers": 10},
+#     {"name": "B", "followers": 20},
+# ]
+
+# # ----- STUBS -------------------------------------------------
+# def sortear_perfil(lista):
+#     """Stub: devolve sempre o primeiro item (por enquanto)."""
+#     return lista[0]
+
+# def extrair_numero(perfil):
+#     """Stub: devolve 0 para não quebrar cálculo."""
+#     return 0
+
+# def formatar_perfil(perfil):
+#     """Stub: devolve string fixa."""
+#     return "<perfil>"
+
+# # -------------------------------------------------------------
+
+# def main():
+#     perf_a = sortear_perfil(DADOS)
+#     perf_b = sortear_perfil(DADOS)
+#     print("A:", formatar_perfil(perf_a))
+#     print("B:", formatar_perfil(perf_b))
+#     num_a = extrair_numero(perf_a)
+#     num_b = extrair_numero(perf_b)
+#     print("Soma provisória:", num_a + num_b)
+
+# if __name__ == "__main__":
+#     main()
+
+
+
 import random
 import dados_externos
+
 
 DICIONARIO = {
         'name': 'Messi',
@@ -814,97 +981,51 @@ d = [
 ]
 
 
-def saudacao():
-    print("bem vindo ao jogo de maior menor")
+#### AREA DE PROCESSAMENTO INTERNO ###########
 
-def quer_jogar():
-    while True:
-        choice = input("Voce quer jogar: y/n").lower()
-        if choice == 'y':
-            return True
-        elif choice != 'y' and choice != 'n':
-            print("apenas y ou n")
-            continue
-        else:
-            return False
+#1 PEGAR UM DICIONARIO DA LISTA DE DICIONARIOS - ALEATORIAMENTE
+def dic_from_list_random(lista):
+    return random.choice(lista)
 
-def escolhe_dicionario_aleatorio(lista):
-    return lista[random.randint(0,len(lista) - 1)]
+# print(dic_from_list_random(d))
 
-# print(escolhe_dicionario_aleatorio(d))
+#2 pegar apenas o par chave valor que contem uma chave com valor tipo numerico:
+
+def key_number_type(dicionario):
+    for key in dicionario.values():
+        if isinstance(key,(float,int)):
+            return key
+
+# print(key_number_type(dic_from_list_random(d)))
 
 
-def esolhe_valor_dentro_do_dicionario(dicionario):
-    for value in dicionario.values():
-        if isinstance(value,int):
-            return value
 
-# dicionarioo = (escolhe_dicionario_aleatorio(d))
 
-# print(esolhe_valor_dentro_do_dicionario(dicionarioo))
-def comparar_valores_De_seguidores(conta1,conta2):
-    if conta1 > conta2:
-        return conta1
-    else:
-        return conta2
 
-def escolha_do_jogador(dicionario1,dicionario2):
-    escolha = input(f"escolha entre {dicionario1} e {dicionario2}")
-    return escolha
 
-def imprime_dicionario_sem_valor_de_Seguidres(dicionario):
-    return {
-        key:value 
-        for key, value in dicionario.items()
-        if not isinstance(value,(int,float))
-    }
 
-# print(imprime_dicionario_sem_valor_de_Seguidres(DICIONARIO))
 
-def comparar_valores_de_seguidores_definir_maior(valor1,valor2):
-    if valor1 > valor2:
-        return valor1
-    else:
-        return valor2
 
-def jogador_Esscolhee(dicionario1,dicionario2):
-    choice = input(f"qual personagem tem mais seguidores?: {dicionario1}\nou\n{dicionario2}")
-    if choice == dicionario1:
-        return esolhe_valor_dentro_do_dicionario(dicionario1)
-    else:
-        return esolhe_valor_dentro_do_dicionario(dicionario2)
 
-def jogador_ganhou(valor_jogador,valor_verdade):
-    if valor_jogador > valor_verdade:
-        return True
-    else:
-        return False
 
-def jogo_joga(lista_de_dicionarios):
-    game_status = True
-    saudacao()
-    quer_jogar()
-    if quer_jogar == True:
-        while game_status == True:
-            dic1 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
-            dic2 = escolhe_dicionario_aleatorio(lista_de_dicionarios)
-            valor1 = esolhe_valor_dentro_do_dicionario(dic1)
-            valor2 = esolhe_valor_dentro_do_dicionario(dic2)
-            valor_verdade = comparar_valores_de_seguidores_definir_maior(valor1,valor2)
-            dicionario_sem_valor_numerico1 = imprime_dicionario_sem_valor_de_Seguidres(dic1)
-            dicionario_sem_valor_numerico2 = imprime_dicionario_sem_valor_de_Seguidres(dic2)
-            choice = input(f"quem voce acha que tem mais seguidores:\nA:{dicionario_sem_valor_numerico1}\nou\nB:{dicionario_sem_valor_numerico2}")
-            if choice == 'a':
-                valor_jogador = dic1
-            else:
-                valor_jogador = dic2
-            jogador_ganhou(valor_jogador,valor_verdade)
-            if valor_verdade == True:
-                continue
-            else:
-                game_status = False
-                break
-    else:
-        print('tchau')
 
-jogo_joga(dados_externos.famous_data)
+
+# def saudacao():
+#     return "BEM VINDO AO JOGO DE MAIOR OU MENOR"
+
+# def despedida():
+#     return 'obrigado por tentar a saida errada'
+
+# def jogo():
+    
+
+
+# def quer_jogar():
+#     while True:
+#         jogador_quer = input("voce quer jogar: N/Y").lower().strip()
+#         if jogador_quer == 'y':
+#             jogo()
+#         elif jogador_quer == 'n':
+#             despedida()
+#         else:
+#             print("apenas y ou n")
