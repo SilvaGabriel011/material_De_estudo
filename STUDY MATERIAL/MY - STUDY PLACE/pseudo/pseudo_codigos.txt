@@ -1,1 +1,62 @@
-area pra colocar os roteiros dos codigos
+material de estudo
+
+
+| Etapa                            | Objetivo                                   | Ação concreta                                                                                                                                                              | Critério de validação                                                                 |
+| -------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **1. Esqueleto**                 | Fixar o fluxo principal                    | Crie a função `main()` contendo apenas comentários-guia (pseudocódigo) e chame-a em `if __name__ == "__main__":`.                                                          | Arquivo executa sem erros e imprime nada.                                             |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **2. Stubs de I/O**              | Garantir entrada e saída básicas           | Implemente funções mínimas para **entrada** (ex.: `obter_input()`) e **saída** (ex.: `mostrar_mensagem()`) que retornem/ imprimam valores fixos.                           | Rodar `main()` mostra saudação e encerra.                                             |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **3. Núcleo de dados**           | Disponibilizar dados ou estado inicial     | Crie funções-stub para **carregar dados** ou **iniciar estado** (`carregar_dados()`, `iniciar_estado()`) que retornem objetos vazios/placeholder.                          | `main()` imprime que dados foram carregados (mesmo vazios).                           |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **4. Processamento isolado**     | Adicionar lógica central passo a passo     | Implemente a PRIMEIRA função real de processamento (por ex. `calcular_resultado()`) recebendo e devolvendo dados simples.                                                  | No REPL, importar e chamar a função; retorno bate com valor esperado.                 |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **5. Conectar no esqueleto**     | Chamar a lógica no fluxo principal         | Substitua no `main()` a chamada stub pelo processamento real; mantenha as demais chamadas como stubs.                                                                      | Programa executa e produz um resultado simplificado (placeholder onde faltam partes). |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **6. Iterar funções auxiliares** | Expandir funcionalidade em pequenos blocos | Para cada nova responsabilidade → crie **stub**, ligue no `main()`, teste RÁPIDO. Depois implemente a função real, re-executando `main()` a cada avanço.                   | Após cada passo, o programa segue executando sem exceções.                            |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **7. Validação de interfaces**   | Garantir compatibilidade entre blocos      | Antes de trocar um stub por código real, documente parâmetros e tipo de retorno esperados; adicione `assert` simples no início de cada função para checar tipos/dimensões. | Se um `assert` falhar você corrige na hora; integração permanece estável.             |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **8. Depuração incremental**     | Conferir fluxos condicionais e loops       | Adicione prints temporários ou use debugger para cada nova parte crítica (condicional ou loop) antes de removê-los.                                                        | Saídas intermediárias confirmam que variáveis recebem valores corretos.               |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **9. Limpeza e refatoração**     | Eliminar código morto / prints de debug    | Quando o fluxo estiver completo, apague stubs remanescentes, prints temporários, extraia funções longas em sub-funções menores e renomeie variáveis para clareza.          | Todos os testes unitários e manuais passam; código legível.                           |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **10. Commites pequenos**        | Versão controlada a cada etapa             | Após cada linha da tabela, `git add . && git commit -m "Etapa N – descrição"`                                                                                              | Histórico mostra evolução incremental; fácil reverter qualquer etapa.                 |
+
+
+# === 1. Esqueleto do main ======================================
+def main():
+    # 1) Saudação
+    saudacao()
+
+    # 2) Perguntar se quer jogar
+    if not quer_jogar():
+        return
+
+    # 3) Preparar perfis iniciais
+    perfil_a = sortear_perfil(DADOS)
+    perfil_b = sortear_perfil(DADOS)
+    while perfil_b == perfil_a:
+        perfil_b = sortear_perfil(DADOS)
+
+    # 4) Loop principal (ainda vazio)
+    jogo_loop(perfil_a, perfil_b, DADOS)
+
+
+# === 2. Stubs (funções vazias) =================================
+def saudacao():
+    pass
+
+def quer_jogar():
+    pass
+
+def sortear_perfil(lista):
+    pass
+
+def jogo_loop(perfil_a, perfil_b, dados):
+    pass
+
+
+# === 3. Execução condicional ===================================
+if __name__ == "__main__":
+    main()
