@@ -75,12 +75,12 @@ introdução
                 o que precisa pra jogar?
 
                 AREA DE PROCESSAMENTO:
-                    lista com dicionarios
-                    dicionario_completo1 = pegar um dicionario aleatorio da lista()
-                        variavel_numerica1 = pegar key que tem valor tipo numerico()
-                    dicionario_completo2 = pegar um dicionario aleatorio da lista()
-                        variavel_numerica2 =  pegar key que tem valor tipo numerico()
-                    valor_verdade = comparar os valores numericos e ver qual é maior()
+                    lista com dicionarios - ok
+                    dicionario_completo1 = pegar um dicionario aleatorio da lista() - ok
+                        variavel_numerica1 = pegar key que tem valor tipo numerico() - ok
+                    dicionario_completo2 = pegar um dicionario aleatorio da lista() - ok
+                        variavel_numerica2 =  pegar key que tem valor tipo numerico()  - ok
+                    valor_verdade = comparar os valores numericos e ver qual é maior() 
                         se variavel_numerica1 > variavel_numerica2:
                             retorna a
                         se variavel_numerica1 < variavel_numerica2:
