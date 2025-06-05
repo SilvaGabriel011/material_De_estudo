@@ -1070,7 +1070,7 @@ def despedida():
 #     return 'obrigado por tentar a saida errada'
 
 def jogo():
-    contador = 1
+    contador = 0
     game_status = True
     while game_status:
     #### area de processamento:
@@ -1089,8 +1089,8 @@ def jogo():
         #### area de interação com o jogador
         valor_user = escolha_do_usuario(dic_sem_typ1,dic_sem_typ2)
         if valor_user == valor_verdade:
-            print(f"\n\nvoce acertou, agora voce tem {contador} pontos acumulados\n\n")
             contador +=1
+            print(f"\n\n####voce acertou, agora voce tem {contador} pontos acumulados####\n\n")
             continue
         elif valor_user != compara_keys_dos_dic_aleatorios_escolhidos:
             print("voce errou!")
