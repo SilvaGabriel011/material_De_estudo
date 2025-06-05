@@ -1041,7 +1041,7 @@ def compara_keys_dos_dic_aleatorios_escolhidos(dicionario1,dicionario2):
 
 def escolha_do_usuario(a,b):
     while True:
-        escolha = input(f"escolha entre A: {a}\ne\nB: {b}\n\n\ndigite apenas a ou b:\n").lower().strip()
+        escolha = input(f"escolha entre \nA: {a}\ne\nB: {b}\n\n\ndigite apenas a ou b:\n").lower().strip()
         if escolha == 'a':
             # print('escolheu a')
             return 'a'
@@ -1070,7 +1070,7 @@ def despedida():
 #     return 'obrigado por tentar a saida errada'
 
 def jogo():
-    contador = 0
+    contador = 1
     game_status = True
     while game_status:
     #### area de processamento:
@@ -1088,22 +1088,23 @@ def jogo():
         
         #### area de interação com o jogador
         valor_user = escolha_do_usuario(dic_sem_typ1,dic_sem_typ2)
-        while True:
-            if valor_user == valor_verdade:
-                contador +=1
-                continue
-            elif valor_user != compara_keys_dos_dic_aleatorios_escolhidos:
-                print("voce errou!")
-                while True:
-                    quer_jogar_denovo = input("voce ainda quer jogar y/n").lower().strip()
-                    if quer_jogar_denovo == 'y':
-                        jogo()
-                    elif quer_jogar_denovo == 'n':
-                        print("ok tchau")
-                        game_status = False
-                    else:
-                        print("apenas 'y' ou 'n'")
-                        continue
+        if valor_user == valor_verdade:
+            print(f"\n\nvoce acertou, agora voce tem {contador} pontos acumulados\n\n")
+            contador +=1
+            continue
+        elif valor_user != compara_keys_dos_dic_aleatorios_escolhidos:
+            print("voce errou!")
+            while True:
+                quer_jogar_denovo = input("voce ainda quer jogar y/n").lower().strip()
+                if quer_jogar_denovo == 'y':
+                    return False
+                elif quer_jogar_denovo == 'n':
+                    print("ok tchau")
+                    game_status = False
+                    break
+                else:
+                    print("apenas 'y' ou 'n'")
+                    continue
 
 
 
