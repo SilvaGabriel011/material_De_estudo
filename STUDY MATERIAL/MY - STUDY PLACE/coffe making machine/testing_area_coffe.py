@@ -60,25 +60,31 @@ def print_report(resources):
 
 #3. troco
 def payment_change(paid_item,item_value):
-    return paid_item - item_value 
+    if paid_item < item_value:
+        return print("there's not enough money")
+    else:
+        return paid_item - item_value 
 
 # print(payment_change(10,2))
 
 #4. quanto foi pago
 def payment_amount():
+    ''''retorna a quantidade paga'''
+    quarter_value = 0.50
+    dimes_value = 0.20
+    nickels_value = 0.10
+    pennies_value = 0.01
     
-    quarter_value = 0,5
-    dimes_value = 0,20
-    nickels_value = 0,10
-    pennies_value = 0,1
-    
-    quarter_quantity = input("how many quarters?: ")
-    dimes_quantity = input("hoy many dimes?: ")
-    nickels_quantity = input("hoy many nickels?: ")
-    pennies_quantity = input("hoy many pennies?: ")
+    quarter_quantity =float(input("how many quarters?: "))
+    dimes_quantity = float(input("hoy many dimes?: "))
+    nickels_quantity = float(input("hoy many nickels?: "))
+    pennies_quantity = float(input("hoy many pennies?: "))
     
     paid_value = (quarter_quantity * quarter_value) + (dimes_quantity * dimes_value) + (nickels_quantity * nickels_value) + (pennies_quantity * pennies_value)
     return paid_value
+
+# print(payment_amount())
+
 
 #5. quanto precisa pagar
 def payment_needed(item, dicionario):
@@ -90,5 +96,14 @@ def payment_needed(item, dicionario):
         return dicionario['espresso']['cost']
 
 #6. custo de ingredientes pra maquina
-def ingredients_cost(item,dicionario):
-    
+def ingredients_disponible_after_consume(item,dicionario):
+    """"pega o item que vai ser consumido, e tira os insumos
+    retorna um dicionario com a nova quantidade de items disponiveis para fazer uma proxima bebida
+    """
+    if item == 'latte': 
+        
+        pass
+    elif item == 'espresso':
+        pass
+    else:
+        pass
