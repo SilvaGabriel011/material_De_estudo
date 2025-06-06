@@ -1,0 +1,16 @@
+1. area de desmontar o codigo 
+    1- apresenta opções de pedido (expresso,latte, capuccino)
+        uma quarta opção é possivel: report
+            se report mostra os recursos disponiveis na maquina
+        
+        se usuario escolhe pedir uma das bebidas
+            pede para inserir o pagamentos em NUMERO DE MOEDAS
+                RECEBE O NUMERO DE MOEDAS, CALCULA O VALOR DE CADA UMA PELO VALOR DE NUMERO INSERIDO E DEPOIS VE O TOTAL  
+                SE TOTAL FOR DIFERENTE DO VALOR DO pedido   
+                    REFUND E Encerra ( ou pode recomeçar o loop de perguntar o que o cliente quer)
+                se total for igual ao valor do pedido 
+                    mostra o troco
+                    mostra (dá) ao usuario o item que ele pediu 
+                    abre loop para novo pedido MAS CONSUMIU A QUANTIDADE DE INGREDIENTE DO PEDIDO ANTERIOR
+
+    
