@@ -61,7 +61,8 @@ def print_report(resources):
 #3. troco
 def payment_change(paid_item,item_value):
     if paid_item < item_value:
-        return print("there's not enough money")
+        print("there's not enough money")
+        return False
     else:
         return paid_item - item_value 
 
