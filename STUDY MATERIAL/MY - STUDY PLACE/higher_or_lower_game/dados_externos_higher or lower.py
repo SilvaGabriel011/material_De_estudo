@@ -262,7 +262,7 @@ famous_data = [
     },
     {
         'name': 'Gigi Hadid',
-        'follower_count': 54,
+        'follower_count': 54,s
         'description': 'Model',
         'country': 'United States'
     },
@@ -313,11 +313,15 @@ higer_lower_logo = """"
         /____/                                                                  
 """
 
-versus ="""
+# # versus ="""
+
+
             
- _   _______
-| | / / ___/
-| |/ (__  ) 
-|___/____/  
+#  _   _______
+# | | / / ___/
+# | |/ (__  ) 
+# |___/____/  
             
-""" 
+# """ 
+
+

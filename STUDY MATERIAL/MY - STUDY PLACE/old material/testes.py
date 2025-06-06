@@ -948,177 +948,177 @@
 
 
 
-import random
-import dados_externos
+# import random
+# import dados_externos
 
 
-DICIONARIO = {
-        'name': 'Messi',
-        'follower_count': 890,
-        'description': 'footblall player',
-        'country': 'Argentina'
-        }
+# DICIONARIO = {
+#         'name': 'Messi',
+#         'follower_count': 890,
+#         'description': 'footblall player',
+#         'country': 'Argentina'
+#         }
 
-d = [
-    {
-        'name': 'Messi',
-        'follower_count': 890,
-        'description': 'footblall player',
-        'country': 'Argentina'
-    },
-    {
-        'name': 'Loud',
-        'follower_count': 36,
-        'description': 'e-sports team',
-        'country': 'Brasil'
-    },
-        {
-        'name': 'Instagram',
-        'follower_count': 346,
-        'description': 'Social media platform',
-        'country': 'United States'
-    },
-]
-
-
-#### AREA DE PROCESSAMENTO INTERNO ###########
-
-#1 PEGAR UM DICIONARIO DA LISTA DE DICIONARIOS - ALEATORIAMENTE
-def dic_from_list_random(lista):
-    return random.choice(lista)
-
-# print(dic_from_list_random(d))
-
-#2 pegar apenas o par chave valor que contem uma chave com valor tipo numerico:
-
-def key_number_type(dicionario):
-    for key in dicionario.values():
-        if isinstance(key,(float,int)):
-            return key
-
-# print(key_number_type(dic_from_list_random(d)))
-
-#3 refatorar o dicionario e apenas mostrar os pares que nao tem key do tipo numerico
-def retorna_dic_sem_key_typ_numericos(dicionario):
-    return {
-        chave : valor 
-        for chave,valor in dicionario.items()
-            if not isinstance(valor,(int,float))
-    }
-
-# print(retorna_dic_sem_key_numericos(DICIONARIO))
-
-#4 comparar as chaves numericas dos dicionarios aleatorios escolhidos
-def compara_keys_dos_dic_aleatorios_escolhidos(dicionario1,dicionario2):
-    if dicionario1 > dicionario2:
-        return 'a'
-    elif dicionario1 < dicionario2:
-        return 'b'
-    else:
-        return 'e'
+# d = [
+#     {
+#         'name': 'Messi',
+#         'follower_count': 890,
+#         'description': 'footblall player',
+#         'country': 'Argentina'
+#     },
+#     {
+#         'name': 'Loud',
+#         'follower_count': 36,
+#         'description': 'e-sports team',
+#         'country': 'Brasil'
+#     },
+#         {
+#         'name': 'Instagram',
+#         'follower_count': 346,
+#         'description': 'Social media platform',
+#         'country': 'United States'
+#     },
+# ]
 
 
+# #### AREA DE PROCESSAMENTO INTERNO ###########
 
-############ area de interação com o jogador
+# #1 PEGAR UM DICIONARIO DA LISTA DE DICIONARIOS - ALEATORIAMENTE
+# def dic_from_list_random(lista):
+#     return random.choice(lista)
 
-#1. mostrar ao usuario quais sao suas opções
+# # print(dic_from_list_random(d))
 
-# def mostrar_dic_sem_key_typ_num(lista):
-#     dicionario1 = dic_from_list_random(lista)
-#     dicionario2 = dic_from_list_random(lista)
-#     if dicionario1 == dicionario2:
-#         while dicionario1 == dicionario2:
-#             dic_from_list_random(lista)
-#     print(f"opção a: {retorna_dic_sem_key_typ_numericos(dicionario1)}")
-#     print(f"opção b: {retorna_dic_sem_key_typ_numericos(dicionario2)}")
+# #2 pegar apenas o par chave valor que contem uma chave com valor tipo numerico:
 
+# def key_number_type(dicionario):
+#     for key in dicionario.values():
+#         if isinstance(key,(float,int)):
+#             return key
 
-# mostrar_dic_sem_key_typ_num(d)
+# # print(key_number_type(dic_from_list_random(d)))
 
+# #3 refatorar o dicionario e apenas mostrar os pares que nao tem key do tipo numerico
+# def retorna_dic_sem_key_typ_numericos(dicionario):
+#     return {
+#         chave : valor 
+#         for chave,valor in dicionario.items()
+#             if not isinstance(valor,(int,float))
+#     }
 
+# # print(retorna_dic_sem_key_numericos(DICIONARIO))
 
-#2. usuario escolhe entre as opções
-
-def escolha_do_usuario(a,b):
-    while True:
-        escolha = input(f"escolha entre \nA: {a}\ne\nB: {b}\n\n\ndigite apenas a ou b:\n").lower().strip()
-        if escolha == 'a':
-            # print('escolheu a')
-            return 'a'
-        elif escolha == 'b':
-            # print('escolheu b')
-            return 'b'
-        else:
-            print("digite somente 'A' ou 'B'\n\n\n ")
-            continue
-
-# escolha_do_usuario()
-
-def despedida():
-    print('valeu amigo')
-#3. comparar escolha do usuario com valor real
-# def comparar_escolha_user_valor_real(escolha_usuario,valor_verdade):
-#     if escolha_usuario == valor_verdade:
-#         contador +=1
+# #4 comparar as chaves numericas dos dicionarios aleatorios escolhidos
+# def compara_keys_dos_dic_aleatorios_escolhidos(dicionario1,dicionario2):
+#     if dicionario1 > dicionario2:
+#         return 'a'
+#     elif dicionario1 < dicionario2:
+#         return 'b'
 #     else:
-#         brea
+#         return 'e'
 
-# def saudacao():
-#     return "BEM VINDO AO JOGO DE MAIOR OU MENOR"
+
+
+# ############ area de interação com o jogador
+
+# #1. mostrar ao usuario quais sao suas opções
+
+# # def mostrar_dic_sem_key_typ_num(lista):
+# #     dicionario1 = dic_from_list_random(lista)
+# #     dicionario2 = dic_from_list_random(lista)
+# #     if dicionario1 == dicionario2:
+# #         while dicionario1 == dicionario2:
+# #             dic_from_list_random(lista)
+# #     print(f"opção a: {retorna_dic_sem_key_typ_numericos(dicionario1)}")
+# #     print(f"opção b: {retorna_dic_sem_key_typ_numericos(dicionario2)}")
+
+
+# # mostrar_dic_sem_key_typ_num(d)
+
+
+
+# #2. usuario escolhe entre as opções
+
+# def escolha_do_usuario(a,b):
+#     while True:
+#         escolha = input(f"escolha entre \nA: {a}\ne\nB: {b}\n\n\ndigite apenas a ou b:\n").lower().strip()
+#         if escolha == 'a':
+#             # print('escolheu a')
+#             return 'a'
+#         elif escolha == 'b':
+#             # print('escolheu b')
+#             return 'b'
+#         else:
+#             print("digite somente 'A' ou 'B'\n\n\n ")
+#             continue
+
+# # escolha_do_usuario()
 
 # def despedida():
-#     return 'obrigado por tentar a saida errada'
+#     print('valeu amigo')
+# #3. comparar escolha do usuario com valor real
+# # def comparar_escolha_user_valor_real(escolha_usuario,valor_verdade):
+# #     if escolha_usuario == valor_verdade:
+# #         contador +=1
+# #     else:
+# #         break
 
-def jogo():
-    contador = 0
-    game_status = True
-    while game_status:
-    #### area de processamento:
-        lista_dicionarios = dados_externos.famous_data
-        dicionario1 = dic_from_list_random(lista_dicionarios)
-        dicionario2 = dic_from_list_random(lista_dicionarios)
-        if dicionario1 == dicionario2:
-            while dicionario1 == dicionario2:
-                dicionario2 = dic_from_list_random(lista_dicionarios)
-        valor_dic1 = key_number_type(dicionario1)
-        valor_dic2 = key_number_type(dicionario2)
-        dic_sem_typ1 = retorna_dic_sem_key_typ_numericos(dicionario1)
-        dic_sem_typ2 = retorna_dic_sem_key_typ_numericos(dicionario2)
-        valor_verdade = compara_keys_dos_dic_aleatorios_escolhidos(valor_dic1,valor_dic2)
+# # def saudacao():
+# #     return "BEM VINDO AO JOGO DE MAIOR OU MENOR"
+
+# # def despedida():
+# #     return 'obrigado por tentar a saida errada'
+
+# def jogo():
+#     contador = 0
+#     game_status = True
+#     while game_status:
+#     #### area de processamento:
+#         lista_dicionarios = dados_externos.famous_data
+#         dicionario1 = dic_from_list_random(lista_dicionarios)
+#         dicionario2 = dic_from_list_random(lista_dicionarios)
+#         if dicionario1 == dicionario2:
+#             while dicionario1 == dicionario2:
+#                 dicionario2 = dic_from_list_random(lista_dicionarios)
+#         valor_dic1 = key_number_type(dicionario1)
+#         valor_dic2 = key_number_type(dicionario2)
+#         dic_sem_typ1 = retorna_dic_sem_key_typ_numericos(dicionario1)
+#         dic_sem_typ2 = retorna_dic_sem_key_typ_numericos(dicionario2)
+#         valor_verdade = compara_keys_dos_dic_aleatorios_escolhidos(valor_dic1,valor_dic2)
         
-        #### area de interação com o jogador
-        valor_user = escolha_do_usuario(dic_sem_typ1,dic_sem_typ2)
-        if valor_user == valor_verdade:
-            contador +=1
-            print(f"\n\n####voce acertou, agora voce tem {contador} pontos acumulados####\n\n")
-            continue
-        elif valor_user != compara_keys_dos_dic_aleatorios_escolhidos:
-            print("voce errou!")
-            while True:
-                quer_jogar_denovo = input("voce ainda quer jogar y/n").lower().strip()
-                if quer_jogar_denovo == 'y':
-                    return False
-                elif quer_jogar_denovo == 'n':
-                    print("ok tchau")
-                    game_status = False
-                    break
-                else:
-                    print("apenas 'y' ou 'n'")
-                    continue
+#         #### area de interação com o jogador
+#         valor_user = escolha_do_usuario(dic_sem_typ1,dic_sem_typ2)
+#         if valor_user == valor_verdade:
+#             contador +=1
+#             print(f"\n\n####voce acertou, agora voce tem {contador} pontos acumulados####\n\n")
+#             continue
+#         elif valor_user != compara_keys_dos_dic_aleatorios_escolhidos:
+#             print("voce errou!")
+#             while True:
+#                 quer_jogar_denovo = input("voce ainda quer jogar y/n").lower().strip()
+#                 if quer_jogar_denovo == 'y':
+#                     return False
+#                 elif quer_jogar_denovo == 'n':
+#                     print("ok tchau")
+#                     game_status = False
+#                     break
+#                 else:
+#                     print("apenas 'y' ou 'n'")
+#                     continue
 
 
 
 
-def quer_jogar():
-    game_status = True
-    while game_status:
-        jogador_quer = input("voce quer jogar: N/Y\n").lower().strip()
-        if jogador_quer == 'y':
-            jogo()
-        elif jogador_quer == 'n':
-            despedida()
-            game_status = False
-        else:
-            print("apenas y ou n")
+# def quer_jogar():
+#     game_status = True
+#     while game_status:
+#         jogador_quer = input("voce quer jogar: N/Y\n").lower().strip()
+#         if jogador_quer == 'y':
+#             jogo()
+#         elif jogador_quer == 'n':
+#             despedida()
+#             game_status = False
+#         else:
+#             print("apenas y ou n")
 
-quer_jogar()
+# quer_jogar()
