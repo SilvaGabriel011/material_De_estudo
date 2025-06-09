@@ -46,8 +46,13 @@ stock = dados_externos_cafe.resources
 #1. parte === interceptar cliente e decicdir caminho
 def first_choice():
     """"inicia junto do sistema, escolha de caminho"""
-    choice = input("what would u like to order? (espresso/latte/capuccino): ")
-    return choice
+    while True:
+        choice = input("what would u like to order? (espresso/latte/capuccino): ")
+        if choice != 'latte' and choice != "espresso" and choice != 'cappuccino':
+            print("try only: espresso OR latte OR cappuccino")
+            # print('\n'*10)
+            continue
+        return choice
 
 # print(first_choice())
 #2. parte === se o usuario pedir report imprime os ingredientes que restam na maquino
@@ -97,14 +102,63 @@ def payment_needed(item, dicionario):
         return dicionario['espresso']['cost']
 
 #6. custo de ingredientes pra maquina
-def ingredients_disponible_after_consume(item,dicionario):
-    """"pega o item que vai ser consumido, e tira os insumos
-    retorna um dicionario com a nova quantidade de items disponiveis para fazer uma proxima bebida
-    """
-    if item == 'latte': 
+# def ingredients_disponible_after_consume(item,dicionario):
+#     """"pega o item que vai ser consumido, e tira os insumos
+#     retorna um dicionario com a nova quantidade de items disponiveis para fazer uma proxima bebida
+#     """
+#     if item == 'latte': 
         
-        pass
-    elif item == 'espresso':
-        pass
+#         pass
+#     elif item == 'espresso':
+#         pass
+#     else:
+#         pass
+
+
+DICIONARIO1 = {
+        'agua': 300,
+        'leite': 200,
+        'cafe' : 50
+            }
+
+DICIONARIO2 = {
+        'agua': 100,
+        'leite': 50,
+        'cafe' : 10
+            }
+
+
+
+# def imprime_dicionario(dicionario):
+#     return print(dicionario)
+
+# imprime_dicionario(dicionario1)
+
+def stock_needed(estoque ,bebeida):
+    #condição de fazer, se algum desses aqui der TRUE, sai da função com false
+        #se sair da função como false imprime 'nao da pra fazer' 
+        #pode loopar dentro ainda com a quantidade reduzida
+
+    faltando = {}
+    
+    for ingrediente in bebeida['ingredients']:
+        precisa = bebeida['ingredients'][ingrediente]
+        if ingrediente in estoque:
+            disponivel = estoque[ingrediente]
+        else:
+            disponivel
+        
+        if disponivel < precisa:
+            falta = precisa - disponivel
+            faltando[ingrediente] = falta
+    if len(faltando) == 0:
+        return True
     else:
-        pass
+        print(f"Faltam os seguintes ingredients: {faltando}")
+        return False
+
+def atualizar_estoque(estoque,bebida):
+    for ingrediente in bebida['ingredients']:
+        usado = bebida['ingredients'][ingrediente]
+        estoque[ingrediente] = estoque[ingrediente] - usado
+    return estoque
