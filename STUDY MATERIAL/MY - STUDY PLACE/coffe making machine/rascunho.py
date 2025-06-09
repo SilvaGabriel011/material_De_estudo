@@ -81,3 +81,4 @@ def teste_print_dicionario(dicionario):
         print (dicionario['ingredients'][ingrediente])
 
 teste_print_dicionario(MENU["latte"])
+teste_print_dicionario(MENU["cappuccino"])
