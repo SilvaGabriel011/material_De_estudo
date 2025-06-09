@@ -76,9 +76,40 @@ resources = {
 }
 
 
-def teste_print_dicionario(dicionario):
-    for ingrediente in dicionario['ingredients']:
-        print (dicionario['ingredients'][ingrediente])
+# def teste_print_dicionario(dicionario):
+#     for ingrediente in dicionario['ingredients']:
+#         print (dicionario['ingredients'][ingrediente])
 
-teste_print_dicionario(MENU["latte"])
-teste_print_dicionario(MENU["cappuccino"])
+# teste_print_dicionario(MENU["latte"])
+# teste_print_dicionario(MENU["cappuccino"])
+
+
+def stock_needed(estoque ,bebeida):
+    #condição de fazer, se algum desses aqui der TRUE, sai da função com false
+        #se sair da função como false imprime 'nao da pra fazer' 
+        #pode loopar dentro ainda com a quantidade reduzida
+    faltando = {}
+    for ingrediente in bebeida['ingredients']:
+        precisa = bebeida['ingredients'][ingrediente]
+        if ingrediente in estoque:
+            disponivel = estoque[ingrediente]
+        else:
+            disponivel
+        if disponivel < precisa:
+            falta = precisa - disponivel
+            faltando[ingrediente] = falta
+    if len(faltando) == 0:
+        return True
+    else:
+        print(f"Faltam os seguintes ingredients: {faltando}")
+        return False
+
+def atualizar_estoque(estoque,bebida):
+    for ingrediente in bebida['ingredients']:
+        usado = bebida['ingredients'][ingrediente]
+        estoque[ingrediente] = estoque[ingrediente] - usado
+    return estoque
+
+print(stock_needed(resources,MENU['espresso']))
+
+print(atualizar_estoque(resources,MENU['espresso']))
