@@ -35,4 +35,5 @@ def teste_print_dicionario(dicionario):
     for ingrediente in dicionario['ingredients']:
         variave = (dicionario['ingredients'][ingrediente])
         print(variave)
-teste_print_dicionario(MENU["latte"])
+bebida_latte = MENU['latte']        
+teste_print_dicionario(bebida_latte)

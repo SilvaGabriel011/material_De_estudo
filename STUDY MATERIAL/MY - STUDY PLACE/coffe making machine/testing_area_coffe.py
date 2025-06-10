@@ -47,8 +47,10 @@ stock = dados_externos_cafe.resources
 def first_choice():
     """"inicia junto do sistema, escolha de caminho"""
     while True:
-        choice = input("what would u like to order? (espresso/latte/capuccino): ")
-        if choice != 'latte' and choice != "espresso" and choice != 'cappuccino':
+        choice = input("what would u like to order? (espresso/latte/capuccino): ").lower().strip()
+        if choice == 'report':
+            return choice
+        elif choice != 'latte' and choice != "espresso" and choice != 'cappuccino':
             print("try only: espresso OR latte OR cappuccino")
             # print('\n'*10)
             continue
@@ -66,7 +68,7 @@ def print_report(resources):
 #3. troco
 def payment_change(paid_item,item_value):
     if paid_item < item_value:
-        print("there's not enough money")
+        print(f"there's not enough money\nITEM COSTS:{item_value}\nPAID VALUE:{paid_item}")
         return False
     else:
         return paid_item - item_value 
@@ -81,10 +83,10 @@ def payment_amount():
     nickels_value = 0.10
     pennies_value = 0.01
     
-    quarter_quantity =float(input("how many quarters?: "))
-    dimes_quantity = float(input("hoy many dimes?: "))
-    nickels_quantity = float(input("hoy many nickels?: "))
-    pennies_quantity = float(input("hoy many pennies?: "))
+    quarter_quantity =int(input("how many quarters?: "))
+    dimes_quantity = int(input("hoy many dimes?: "))
+    nickels_quantity = int(input("hoy many nickels?: "))
+    pennies_quantity = int(input("hoy many pennies?: "))
     
     paid_value = (quarter_quantity * quarter_value) + (dimes_quantity * dimes_value) + (nickels_quantity * nickels_value) + (pennies_quantity * pennies_value)
     return paid_value
@@ -102,30 +104,25 @@ def payment_needed(item, dicionario):
         return dicionario['espresso']['cost']
 
 #6. custo de ingredientes pra maquina
-# def ingredients_disponible_after_consume(item,dicionario):
-#     """"pega o item que vai ser consumido, e tira os insumos
-#     retorna um dicionario com a nova quantidade de items disponiveis para fazer uma proxima bebida
-#     """
-#     if item == 'latte': 
-        
-#         pass
-#     elif item == 'espresso':
-#         pass
-#     else:
-#         pass
+def atualizar_estoque(estoque,bebida):
+    for ingrediente in bebida['ingredients']:
+        usado = bebida['ingredients'][ingrediente]
+        estoque[ingrediente] = estoque[ingrediente] - usado
+    return estoque
 
 
-DICIONARIO1 = {
-        'agua': 300,
-        'leite': 200,
-        'cafe' : 50
-            }
 
-DICIONARIO2 = {
-        'agua': 100,
-        'leite': 50,
-        'cafe' : 10
-            }
+# DICIONARIO1 = {
+#         'agua': 300,
+#         'leite': 200,
+#         'cafe' : 50
+#             }
+
+# DICIONARIO2 = {
+#         'agua': 100,
+#         'leite': 50,
+#         'cafe' : 10
+#             }
 
 
 
@@ -157,8 +154,3 @@ def stock_needed(estoque ,bebeida):
         print(f"Faltam os seguintes ingredients: {faltando}")
         return False
 
-def atualizar_estoque(estoque,bebida):
-    for ingrediente in bebida['ingredients']:
-        usado = bebida['ingredients'][ingrediente]
-        estoque[ingrediente] = estoque[ingrediente] - usado
-    return estoque
