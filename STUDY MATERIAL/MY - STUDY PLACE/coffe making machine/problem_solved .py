@@ -1,4 +1,3 @@
-import random
 import dados_externos_cafe
 import testing_area_coffe
 
